@@ -19,7 +19,7 @@ This project combines facial emotion recognition with music recommendations and 
 
 1. Clone the repository:
 ```bash
-git clone <https://github.com/sameerpanhwarit/AI-Song-Recommendation>
+git clone https://github.com/sameerpanhwarit/AI-Song-Recommendation
 cd Emotion-Recognition
 ```
 
