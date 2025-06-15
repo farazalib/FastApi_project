@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MoodSync Main</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="green">Welcome {{ name }}</h2>
+        <form action="/search" method="post">
+            <input type="text" name="search" placeholder="Search for songs">
+            <button type="submit">Search</button>
+        </form>
+
+        <form action="/detect_mood" method="post" enctype="multipart/form-data">
+            <label class="label">Upload Face Image for Mood Detection:</label>
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Detect Mood 🎭</button>
+        </form>
+
+        <form action="/suggestions" method="post">
+            <button type="submit">Weather-Based Suggestions</button>
+        </form>
+
+        {% if songs %}
+            <h3 class="green">Search Results:</h3>
+            <ul>
+                {% for song in songs %}
+                <li><a href="{{ song.url }}" target="_blank">{{ song.name }} - {{ song.artist }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

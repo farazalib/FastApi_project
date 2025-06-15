@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Suggestions</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% else %}
+            <h2 class="green">🌤 Weather: {{ desc }} | Temp: {{ temp }}&#8451;</h2>
+            <h3>Recommended Songs:</h3>
+            <ul>
+                {% for song in songs %}
+                <li><a href="{{ song.url }}" target="_blank">{{ song.name }} - {{ song.artist }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="/">⬅ Back</a>
+    </div>
+</body>
+</html>
