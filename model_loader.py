@@ -1,10 +1,11 @@
 import numpy as np
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-model = load_model("./Model/FER_DATA.keras")
+model = tf.keras.models.load_model("./Model/FER_DATA.keras")
 
-emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+emotion_labels = ['Angry', 'Happy', 'Sad',  'Neutral']
 
 def predict_emotion(image_path: str) -> str:
     img = Image.open(image_path).convert('L').resize((48, 48))
@@ -14,3 +15,5 @@ def predict_emotion(image_path: str) -> str:
     predictions = model.predict(img_array)
     emotion_index = np.argmax(predictions)
     return emotion_labels[emotion_index]
+
+

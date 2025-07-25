@@ -3,7 +3,7 @@ import shutil
 from model_loader import predict_emotion
 from spotify_client import get_song_by_emotion
 from weather_client import get_city_from_ip, map_weather_to_emotion, get_weather_for_city, get_public_ip
-
+import uvicorn
 app = FastAPI()
 
 @app.post("/recommend")
@@ -36,5 +36,5 @@ async def weather_songs(request: Request):
     }
 
 if __name__ == "__main__":
-    import uvicorn
+    
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
